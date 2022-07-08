@@ -44,7 +44,10 @@ const getRandomInt = (min,max) => {
 function checkLength(string, maxLength) {
   return string.length < maxLength;
 }
+
+const getRandomItemFromArray = (items) => items[getRandomPositiveInteger(0, items.length-1)];
 //создает url строку
+
 function createUrl() {
   return `photos/${getRandomPositiveInteger(1,25)}.jpg`;
 }
@@ -73,40 +76,36 @@ const variantsOfNames = [
   'Коля'
 ];
 
-const createName = () => variantsOfNames[getRandomPositiveInteger(0,4)];
+const createName = () => getRandomItemFromArray (variantsOfNames);
 
-const createMessage = () => variantsOfMessages[getRandomPositiveInteger(0,5)];
+const createMessage = () => getRandomItemFromArray(variantsOfMessages);
 
-const createDescription = () => variantsOfDescriptions[getRandomPositiveInteger(0,4)];
+const createDescription = () => getRandomItemFromArray(variantsOfDescriptions);
 
-function createFormObject() {
+function createFormObject(_, id) {
   return ({
-    id: getRandomPositiveInteger(1,25),
+    id,
     url: createUrl(),
-    description: createDescription,
+    description: createDescription(),
     likes: getRandomInt(15,200),
-    comments: createComments(1)
+    comments: createComments(getRandomPositiveInteger(0,10))
   });
 }
 
 const similarFormObjects = Array.from({length: 25}, createFormObject);
 
 
-function createComment() {
+function createComment(_, id) {
   return ({
-    id: getRandomPositiveInteger(1,25),
+    id,
     avatar: createAvatar(1,6),
     message: createMessage(),
     name: createName(),
   });
 }
 
-let arrayOfComments = [];
-
 function createComments (cycles) {
-  for (let i = 0; i < cycles; i++) {
-    arrayOfComments[i] = createComment();
-  }
-  return arrayOfComments;
+  return Array.from({length: cycles}, createComment);
 }
 
+console.log(Array.from({length: 5}, createFormObject));
