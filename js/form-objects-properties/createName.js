@@ -1,4 +1,4 @@
-import { getRandomItemFromArray } from './functionsForArray/getRandomItemFromArray.js';
+import { getRandomItemFromArray } from './functionsForArray/getRandomItemFromArray.js.js';
 import { variantsOfNames } from '../variables/formVariables.js';
 
 const createName = () => getRandomItemFromArray (variantsOfNames);

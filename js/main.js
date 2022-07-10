@@ -1,3 +1,3 @@
-import {similarFormObjects} from './createFormFunctions/createWholeForm.js';
+import {similarFormObjects} from './create_form/createWholeForm.js';
 
 similarFormObjects();

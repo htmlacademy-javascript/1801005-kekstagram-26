@@ -1,4 +1,4 @@
-import { getRandomPositiveInteger } from './mathFunctions/randomNumber.js';
+import { getRandomPositiveInteger } from './mathFunctions/randomNumber.js.js.js';
 
 const getRandomItemFromArray = (items) => items[getRandomPositiveInteger(0, items.length-1)];
 
