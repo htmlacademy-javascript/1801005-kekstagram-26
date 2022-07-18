@@ -1,3 +1,3 @@
-import {similarFormObjects} from './create_form/createWholeForm.js';
+import {createPictureBlocks} from './render.js';
 
-similarFormObjects();
+createPictureBlocks();
