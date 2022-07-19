@@ -1,22 +1,29 @@
-import { similarFormObjects } from './create-form/create-whole-form.js';
+/**
+ *
+ * @param {HTMLElement} picture
+ * @param {*} item
+ */
+const createSinglePicture = (picture, item) =>{
+  picture.querySelector('.picture__img').src = item.url;
+  picture.querySelector('.picture__likes').textContent = item.likes;
+  picture.querySelector('.picture__comments').textContent = item.comments.length;
+  return picture;
+};
 
-const picture = document.querySelector('#picture');
-const formObjects = similarFormObjects();
-const pictureFragmnet = document.createDocumentFragment();
-const pictureBlocks = document.querySelector('.pictures');
-
-formObjects.array.forEach(({url, likes, comments}) => {
-  const pictureTemplate = picture.cloneNode(true);
-  picture.querySelector('.picture__img').src = url;
-  picture.querySelector('.picture__likes').textContent = likes;
-  picture.querySelector('..picture__comments').textContent = comments;
-  pictureFragmnet.appendChild(pictureTemplate);
-});
-
-pictureBlocks.appendChild(pictureFragmnet);
-
-const createPictureBlocks = () => {
-  pictureBlocks.appendChild(pictureFragmnet);
+/**
+ *
+ * @param {HTMLTemplateElement} template
+ * @returns
+ */
+const createSinglePictureFactory = (template) => (item) => createSinglePicture(template.content.cloneNode(true), item);
+/**
+ *
+ * @param {*} picture
+ * @param {Array} formObjects
+ * @param {HTMLElement} pictureBlocks
+ */
+const createPictureBlocks = (picture,formObjects,pictureBlocks) => {
+  pictureBlocks.append(...formObjects.map(createSinglePictureFactory(picture)));
 };
 
 export {createPictureBlocks};

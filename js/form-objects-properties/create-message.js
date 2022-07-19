@@ -1,5 +1,5 @@
-import { getRandomItemFromArray } from './functionsForArray/getRandomItemFromArray.js.js';
-import { variantsOfMessages } from './variables/formVariables.js.js';
+import { getRandomItemFromArray } from '../for-array/get-random-item-from-array.js';
+import { variantsOfMessages } from '../variables/form-variables.js';
 
 const createMessage = () => getRandomItemFromArray(variantsOfMessages);
 
