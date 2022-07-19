@@ -1,3 +1,8 @@
-import {similarFormObjects} from './create_form/createWholeForm.js';
+import {createPictureBlocks} from './render.js';
+import {similarFormObjects} from './create-form/create-whole-form.js';
 
-similarFormObjects();
+createPictureBlocks(
+  document.querySelector('#picture'),
+  similarFormObjects,
+  document.querySelector('.pictures')
+);

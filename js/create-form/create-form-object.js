@@ -1,7 +1,7 @@
-import {createUrl} from './formObjectsPropertiesFunctions/createUrl.js.js';
-import {createDescription} from './formObjectsPropertiesFunctions/createDescription.js.js';
-import {getRandomPositiveInteger} from './mathFunctions/randomNumber.js.js';
-import {createComments} from './createFormFunctions/createComments.js.js';
+import {createUrl} from '../form-objects-properties/create-url.js';
+import {createDescription} from '../form-objects-properties/create-description.js';
+import {getRandomPositiveInteger} from '../math/random-number.js';
+import {createComments} from '../create-form/create-comments.js';
 
 function createFormObject(_, id) {
   return ({

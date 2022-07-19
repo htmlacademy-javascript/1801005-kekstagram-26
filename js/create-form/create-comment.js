@@ -1,6 +1,6 @@
-import {createAvatar} from './formObjectsPropertiesFunctions/createAvatar.js.js';
-import {createMessage} from './formObjectsPropertiesFunctions/createMessage.js.js';
-import {createName} from './formObjectsPropertiesFunctions/createName.js.js';
+import {createAvatar} from '../form-objects-properties/create-avatar.js';
+import {createMessage} from '../form-objects-properties/create-message.js';
+import {createName} from '../form-objects-properties/create-name.js';
 
 function createComment(_, id) {
   return ({
