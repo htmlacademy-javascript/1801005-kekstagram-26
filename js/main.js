@@ -1,6 +1,6 @@
 import {createPictureBlocks} from './render.js';
 import {similarFormObjects} from './create-form/create-whole-form.js';
-import {butonClose, butonPrepare} from './form-working/photo.js';
+import {butonClose, butonEscClose, butonPrepare} from './form-working/photo.js';
 
 createPictureBlocks(
   document.querySelector('#picture'),
@@ -19,3 +19,22 @@ butonClose(
   document.querySelector('.img-upload__overlay'),
   document.querySelector('body')
 );
+
+butonEscClose(
+  document,
+  document.querySelector('.img-upload__overlay'),
+  document.querySelector('body')
+);
+
+/*const scaleControlSmaller = document.querySelector('.scale__control--smaller');
+const scaleControlBigger = document.querySelector('.scale__control--bigger');
+const scaleControlValue = document.querySelector('.scale__control--value');
+const scaleInt = parseFloat(scaleControlValue.value);
+
+const doBigger = (button, scale, value) => {
+  button.addEventListener('click', () => {
+    value.value = `${scale + 25}%`;
+  });
+};
+*/
+
