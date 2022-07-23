@@ -1,6 +1,12 @@
-import {createPictureBlocks} from './render.js';
-import {similarFormObjects} from './create-form/create-whole-form.js';
-import {butonClose, butonEscClose, butonPrepare, removeEsc, uploadData} from './form-working/photo.js';
+import {
+  createPictureBlocks
+} from './render.js';
+import {
+  similarFormObjects
+} from './create-form/create-whole-form.js';
+import {
+  prepareButtonOpenForm
+} from './form-working/photo.js';
 
 createPictureBlocks(
   document.querySelector('#picture'),
@@ -8,7 +14,7 @@ createPictureBlocks(
   document.querySelector('.pictures')
 );
 
-butonPrepare(
+prepareButtonOpenForm(
   document.querySelector('#upload-cancel'),
   document.querySelector('#upload-file'),
   document.querySelector('.img-upload__overlay'),
@@ -51,4 +57,3 @@ const doBigger = (button, scale, value) => {
   });
 };
 */
-

@@ -7,12 +7,10 @@ const isEscapeKey = (evt) => evt.code === 'Escape';
 const createCloseForm = (handlers, uploadingOverlay, bodyE) => () => {
   uploadingOverlay.classList.add('hidden');
   bodyE.classList.remove('modal-open');
-  /**
-   * remove click
-   * remove esc
-   */
-  const {remove} = handlers;
-  if(typeof remove === 'function'){
+  const {
+    remove
+  } = handlers;
+  if (typeof remove === 'function') {
     remove();
   }
 };
@@ -23,36 +21,35 @@ const createEscapeHandler = (handler) => (evt) => {
   }
 };
 
-const createEventHandlers = (uploadingOverlay, bodyE) => {
+const createEventHandlers = (uploading, closing, uploadingOverlay, bodyE) => {
   const handlers = {};
   const handleClose = createCloseForm(handlers, uploadingOverlay, bodyE);
   const handleEscape = createEscapeHandler(handleClose);
   const handleOpen = () => {
     uploadingOverlay.classList.remove('hidden');
     bodyE.classList.add('modal-open');
+    closing.addEventListener('click', handleClose);
+    bodyE.addEventListener('keydown', handleEscape);
   };
-  return {
-    handleOpen,
-    handleClose,
-    handleEscape,
+  handlers.remove = () => {
+    closing.removeEventListener('click', handleClose);
+    bodyE.removeEventListener('keydown', handleEscape);
+    uploading.value = '';
   };
+  return handleOpen;
 };
 
 const prepareButtonOpenForm = (closing, uploading, uploadingOverlay, bodyE) => {
-  const {handleOpen, handleClose, handleEscape} = createEventHandlers(uploadingOverlay, bodyE);
-  uploading.addEventListener('change', handleOpen);
-  closing.addEventListener('click', handleClose);
-  bodyE.addEventListener('keydown', handleEscape);
-};
-const prepareButtonCloseForm = (closing, uploadingOverlay, bodyE) => {
-  closing.addEventListener('click', createCloseForm({},uploadingOverlay, bodyE));
+  uploading.addEventListener(
+    'change',
+    createEventHandlers(
+      uploading,
+      closing,
+      uploadingOverlay,
+      bodyE,
+    ));
 };
 
-
-const prepareEscapeToCloseForm = (doc, uploadingOverlay, bodyE) => {
-  const handler = createCloseForm({},uploadingOverlay, bodyE);
-  doc.addEventListener('keydown', createEscapeHandler(handler));
-};
 
 const reHashtag = /^#[A-Za-zА-яа-яЁё0-9]{1-19}$/;
 const createArrayOfHash = (hash) => hash.split('#');
@@ -77,20 +74,7 @@ const uploadData = (button, inputCom, inputHash) => {
 };
 
 
-const removeEsc = (doc, uploadingOverlay, bodyE) => {
-  doc.removeEventListener('keydown', (evt) => {
-    if (isEscapeKey(evt)) {
-      uploadingOverlay.classList.add('hidden');
-      bodyE.classList.remove('modal-open');
-    }
-  });
-};
-
-
 export {
-  prepareButtonOpenForm as butonPrepare,
-  prepareButtonCloseForm as butonClose,
-  prepareEscapeToCloseForm as butonEscClose,
+  prepareButtonOpenForm,
   uploadData,
-  removeEsc
 };
