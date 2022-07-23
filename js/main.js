@@ -1,6 +1,6 @@
 import {createPictureBlocks} from './render.js';
 import {similarFormObjects} from './create-form/create-whole-form.js';
-import {butonClose, butonEscClose, butonPrepare, removeEsc, UploadData} from './form-working/photo.js';
+import {butonClose, butonEscClose, butonPrepare, removeEsc, uploadData} from './form-working/photo.js';
 
 createPictureBlocks(
   document.querySelector('#picture'),
@@ -9,34 +9,35 @@ createPictureBlocks(
 );
 
 butonPrepare(
+  document.querySelector('#upload-cancel'),
   document.querySelector('#upload-file'),
   document.querySelector('.img-upload__overlay'),
   document.querySelector('body')
 );
 
-butonClose(
-  document.querySelector('#upload-cancel'),
-  document.querySelector('.img-upload__overlay'),
-  document.querySelector('body')
-);
+// butonClose(
+//   document.querySelector('#upload-cancel'),
+//   document.querySelector('.img-upload__overlay'),
+//   document.querySelector('body')
+// );
 
-butonEscClose(
-  document,
-  document.querySelector('.img-upload__overlay'),
-  document.querySelector('body')
-);
+// butonEscClose(
+//   document,
+//   document.querySelector('.img-upload__overlay'),
+//   document.querySelector('body')
+// );
 
-removeEsc(
-  document,
-  document.querySelector('.img-upload__overlay'),
-  document.querySelector('body')
-);
+// removeEsc(
+//   document,
+//   document.querySelector('.img-upload__overlay'),
+//   document.querySelector('body')
+// );
 
-UploadData(
-  document.querySelector('.img-upload__submit'),
-  document.querySelector('.text__description').value,
-  document.querySelector('.text__hashtags').value
-);
+// uploadData(
+//   document.querySelector('.img-upload__submit'),
+//   document.querySelector('.text__description').value,
+//   document.querySelector('.text__hashtags').value
+// );
 
 
 /*const scaleControlSmaller = document.querySelector('.scale__control--smaller');
