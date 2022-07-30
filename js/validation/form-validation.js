@@ -1,28 +1,6 @@
 import {
-  createPictureBlocks
-} from './render.js';
-import {
-  similarFormObjects
-} from './create-form/create-whole-form.js';
-import {
-  prepareButtonOpenForm
-} from './form-working/photo.js';
-import {
   checkLength
 } from './math/check-length.js';
-
-createPictureBlocks(
-  document.querySelector('#picture'),
-  similarFormObjects,
-  document.querySelector('.pictures')
-);
-
-prepareButtonOpenForm(
-  document.querySelector('#upload-cancel'),
-  document.querySelector('#upload-file'),
-  document.querySelector('.img-upload__overlay'),
-  document.querySelector('body')
-);
 
 const form = document.querySelector('.img-upload__form');
 const buttonUpload = form.querySelector('.img-upload__submit');
@@ -31,7 +9,7 @@ const commentInput = form.querySelector('.text__description');
 
 const pristine = new Pristine(form, {
   classTo: 'form__validation',
-  errorTextParent: 'form__validation',
+  errorTextParent: 'for__validation',
   errorTextClass: 'form__error'
 });
 
@@ -87,7 +65,7 @@ pristine.addValidator(
   'Хэш-тег содержит до 20 символов(буквы английского языка русского языка и цифры, ), включая решётку, разделяется пробелом'
 );
 
-form.addEventListener('submit', () => {
+hashtagInput.addEventListener('change', () => {
   if (pristine.validate() === false ) {
     buttonUpload.disabled = true;
   }
@@ -95,5 +73,3 @@ form.addEventListener('submit', () => {
     buttonUpload.disabled = false;
   }
 });
-
-
