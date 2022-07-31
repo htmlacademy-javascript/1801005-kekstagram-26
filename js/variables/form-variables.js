@@ -23,4 +23,5 @@ const variantsOfDescriptions = [
   'дежавю'
 ];
 
+
 export {variantsOfMessages, variantsOfNames, variantsOfDescriptions};
